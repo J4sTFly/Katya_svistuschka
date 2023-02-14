@@ -8,8 +8,9 @@ from kivy.core.window import Window
 class SnakePart(Widget):
     pass
 
+
 class GameScreen(Widget):
-    step_size = 40
+    step_size = 50
     movement_x = 0
     movement_y = 0
     snake_parts = []
@@ -81,9 +82,6 @@ class GameScreen(Widget):
         head.x += self.movement_x
         head.y += self.movement_y
 
-
-
-
         # Check for snake colliding with food
         if self.collides_widget(head, food):
             food.x = randint(0, Window.width-food.width)
@@ -103,10 +101,13 @@ class GameScreen(Widget):
         if not self.collides_widget(self, head):
             self.new_game()
 
+
 class MainApp(App):
+    def build(self):
+        self.title = 'Катя писюха отдайся заебала'
     def on_start(self):
         self.root.new_game()
-        Clock.schedule_interval(self.root.next_frame, .25)
+        Clock.schedule_interval(self.root.next_frame, .20)
     pass
 
 
